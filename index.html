@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Redux basic example</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/redux@latest/dist/redux.min.js"></script>
+    <script src="_fakeServerApi/index.js"></script>
+    <script src='actions/index.js'></script>
+    <script src='reducers/counter.js'></script>
+    <script src='reducers/sum.js'></script>
+    <script src='reducers/index.js'></script>
+    <script src='middlewares/index.js'></script>
+  </head>
+  <body>
+    <div>
+      <p>
+        Clicked: <span id="value">?</span> times
+        <button id="decrement">Decrease</button>
+        <button id="incrementAsync">Increment async</button>
+      </p>
+      <p>
+        Count Status: <span id="status">?</span>
+      </p>
+    </div>
+
+    <div>
+      <div>
+        <input type="text" name="a" id="a" /> + <input type="text" name="b" id="b"/> = <span id="sum"> 0 </span>
+        <button id="btn-sum">Sum</button>
+      </div>
+    </div>
+
+    <script>
+      document.getElementById('decrement')
+        .addEventListener('click', function () {
+          store.dispatch(decrease());
+        })
+
+      document.getElementById('incrementAsync')
+        .addEventListener('click', function () {
+          store.dispatch(asyncIncrease);
+        })
+
+      document.getElementById('btn-sum')
+        .addEventListener('click', function () {
+          var a = $('#a').val();
+          var b = $('#b').val();
+          store.dispatch(getSum(a,b));
+        })
+    </script>
+    <script src='index.js'></script>
+  </body>
+</html>
