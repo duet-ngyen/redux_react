@@ -9,6 +9,14 @@ function render() {
   }else{
     $("#status").text("done");
   }
+
+  $("#imagesStatus").text(store.getState().imgur.loading);
+
+  var data = store.getState().imgur.data;
+
+  for(var i=0;i<data.length;i++){
+    $("#imageList").append("<br>" + data[i].name)
+  }
 }
 render();
 store.subscribe(render);

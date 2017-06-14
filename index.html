@@ -9,6 +9,7 @@
     <script src='reducers/counter.js'></script>
     <script src='reducers/sum.js'></script>
     <script src='reducers/index.js'></script>
+    <script src='reducers/imgur.js'></script>
     <script src='middlewares/index.js'></script>
   </head>
   <body>
@@ -30,6 +31,13 @@
       </div>
     </div>
 
+    <div>
+      <button id="randomImageButton">Random Img</button>
+      <br>
+      Image load process: <span style="color: blue" id="imagesStatus"></span>
+      <p id="imageList"></p>
+    </div>
+
     <script>
       document.getElementById('decrement')
         .addEventListener('click', function () {
@@ -46,6 +54,11 @@
           var a = $('#a').val();
           var b = $('#b').val();
           store.dispatch(getSum(a,b));
+        })
+
+      document.getElementById('randomImageButton')
+        .addEventListener('click', function () {
+          store.dispatch(getRandomImages);
         })
     </script>
     <script src='index.js'></script>

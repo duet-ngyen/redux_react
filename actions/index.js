@@ -20,3 +20,10 @@ var asyncIncrease = function(dispatch, state){
   );
 }
 
+var getRandomImages = function(dispatch, state){
+  dispatch({type: "IMAGES_LOADING"});
+  var imgurAPI = 'https://api.imgur.com/3/tags'
+  $.getJSON(imgurAPI).done(function(data){
+    dispatch({type: "IMAGES", data: data['data']['tags']});
+  });
+}
