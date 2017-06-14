@@ -13,10 +13,12 @@ function render() {
   $("#imagesStatus").text(store.getState().imgur.loading);
 
   var data = store.getState().imgur.data;
-
+  var list = '';
   for(var i=0;i<data.length;i++){
-    $("#imageList").append("<br>" + data[i].name)
+    list += ' ' + data[i].name;
   }
+
+  $("#imageList").text(list);
 }
 render();
 store.subscribe(render);
